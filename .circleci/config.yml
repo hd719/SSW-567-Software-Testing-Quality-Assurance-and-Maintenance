@@ -1,0 +1,28 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/python:3.13
+    steps:
+      - checkout
+      - run:
+          name: Install uv
+          command: |
+            python -m pip install --upgrade pip
+            python -m pip install uv
+      - run:
+          name: Run assignment 2 tests
+          command: |
+            cd assignment-2-triangle-classification
+            uv run pytest -q
+      - run:
+          name: Run assignment 3 tests
+          command: |
+            cd assignment-3-develop-with-testing-in-mind
+            uv run pytest -q
+
+workflows:
+  build-and-test:
+    jobs:
+      - test
