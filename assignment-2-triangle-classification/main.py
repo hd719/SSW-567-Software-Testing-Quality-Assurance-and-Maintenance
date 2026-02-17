@@ -1,6 +1,11 @@
+"""Triangle classification program for SSW-567 assignment 2."""
+
+
 def classify_triangle(a, b, c):
+    """Classify a triangle by side lengths, including right-triangle detection."""
     sides = sorted([a, b, c])
-    x, y, z = sides # we always treat the largest side as the hypotenuse (z) which is why we sort
+    # We always treat the largest side as the hypotenuse (z), so we sort first.
+    x, y, z = sides
 
     if x <= 0 or y <= 0 or z <= 0:
         return "invalid"
@@ -21,6 +26,7 @@ def classify_triangle(a, b, c):
 
 
 def main():
+    """Run a simple example classification."""
     print(classify_triangle(3, 4, 5))
 
 
