@@ -1,6 +1,9 @@
+"""Unit tests for triangle classification."""
+
 import pytest
 
 from main import classify_triangle
+
 
 @pytest.mark.parametrize(
     "a,b,c,expected",
@@ -12,6 +15,7 @@ from main import classify_triangle
     ],
 )
 def test_invalid_triangles(a, b, c, expected):
+    """Validate detection of invalid triangles."""
     assert classify_triangle(a, b, c) == expected
 
 
@@ -26,6 +30,7 @@ def test_invalid_triangles(a, b, c, expected):
     ],
 )
 def test_basic_classifications(a, b, c, expected):
+    """Validate equilateral, isosceles, and scalene classifications."""
     assert classify_triangle(a, b, c) == expected
 
 
@@ -38,4 +43,5 @@ def test_basic_classifications(a, b, c, expected):
     ],
 )
 def test_right_triangles(a, b, c, expected):
+    """Validate right-triangle detection with side order variations."""
     assert classify_triangle(a, b, c) == expected
